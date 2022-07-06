@@ -30,15 +30,15 @@ workflow pav {
       hapOne = hapOne,
       hapTwo = hapTwo,
       threads = "1",
-      mem_gb = "2",
+      mem_gb = "4",
       sample = sample
   }
   call align.align_ref {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "1",
-      mem_gb = "8",
+      threads = "8",
+      mem_gb = "48",
       sample = sample
   }
   call align.align_get_tig_fa_hap as align_get_tig_fa_h1 {
@@ -75,8 +75,8 @@ workflow pav {
       hap = "h1",
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h1.asmGz,
-      threads = "8",
-      mem_gb = "24",
+      threads = "16",
+      mem_gb = "96",
       sample = sample
   }
   call align.align_map_hap as align_map_h2 {
@@ -86,8 +86,8 @@ workflow pav {
       hap = "h2",
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h2.asmGz,
-      threads = "8",
-      mem_gb = "24",
+      threads = "16",
+      mem_gb = "96",
       sample = sample
   }
   call align.align_get_read_bed_hap as align_get_read_bed_h1 {
@@ -132,8 +132,8 @@ workflow pav {
       hap = "h2",
       bedGz = align_get_read_bed_h2.bedGz,
       asmGz = align_get_tig_fa_h2.asmGz,
-      threads = "2",
-      mem_gb = "8",
+      threads = "4",
+      mem_gb = "16",
       sample = sample
   }
   scatter(i in range(10)) {
@@ -146,7 +146,7 @@ workflow pav {
         trimBed = align_cut_tig_overlap_h1.trimBed,
         asmGz = align_get_tig_fa_h1.asmGz,
         batch = i,
-        threads = "1",
+        threads = "4",
         mem_gb = "24",
         sample = sample
      }
@@ -159,7 +159,7 @@ workflow pav {
         trimBed = align_cut_tig_overlap_h2.trimBed,
         asmGz = align_get_tig_fa_h2.asmGz,
         batch = i,
-        threads = "1",
+        threads = "4",
         mem_gb = "24",
         sample = sample
      }
@@ -170,7 +170,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h1",
       trimBed = align_cut_tig_overlap_h1.trimBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -180,7 +180,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h2",
       trimBed = align_cut_tig_overlap_h2.trimBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -197,7 +197,7 @@ workflow pav {
         batchFile = call_lg_split_h1.batch,
         batch = i,
         threads = "8",
-        mem_gb = "8",
+        mem_gb = "32",
         sample = sample
      }
      call call_lg.call_lg_discover_hap as call_lg_discover_h2 {
@@ -212,7 +212,7 @@ workflow pav {
         batchFile = call_lg_split_h2.batch,
         batch = i,
         threads = "8",
-        mem_gb = "8",
+        mem_gb = "32",
         sample = sample
      }
   }
@@ -222,7 +222,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h1",
       snvBatch = call_cigar_h1.snvBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -232,7 +232,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h2",
       snvBatch = call_cigar_h2.snvBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -243,7 +243,7 @@ workflow pav {
       hap = "h1",
       svtype = "del",
       inbed = call_lg_discover_h1.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -254,7 +254,7 @@ workflow pav {
       hap = "h1",
       svtype = "ins",
       inbed = call_lg_discover_h1.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -265,7 +265,7 @@ workflow pav {
       hap = "h1",
       svtype = "inv",
       inbed = call_lg_discover_h1.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -276,7 +276,7 @@ workflow pav {
       hap = "h2",
       svtype = "del",
       inbed = call_lg_discover_h2.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -287,7 +287,7 @@ workflow pav {
       hap = "h2",
       svtype = "ins",
       inbed = call_lg_discover_h2.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -298,7 +298,7 @@ workflow pav {
       hap = "h2",
       svtype = "inv",
       inbed = call_lg_discover_h2.allBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -375,8 +375,8 @@ workflow pav {
       hap = "h1",
       vartype="sv",
       inbed = call_cigar_merge_h1.insdelBedMerge,
-      threads = "4",
-      mem_gb = "16",
+      threads = "8",
+      mem_gb = "64",
       sample = sample
   }
   call call_inv.call_inv_flag_insdel_cluster_sv_hap as call_inv_flag_insdel_cluster_sv_h2 {
@@ -386,8 +386,8 @@ workflow pav {
       hap = "h2",
       vartype="sv",
       inbed = call_cigar_merge_h2.insdelBedMerge,
-      threads = "4",
-      mem_gb = "16",
+      threads = "8",
+      mem_gb = "64",
       sample = sample
   }
   call call_pav.call_mappable_bed_hap as call_mappable_bed_h1 {
@@ -399,7 +399,7 @@ workflow pav {
       delBed = call_merge_lg_del_h1.mergeBed,
       insBed = call_merge_lg_ins_h1.mergeBed,
       invBed = call_merge_lg_inv_h1.mergeBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -412,7 +412,7 @@ workflow pav {
       delBed = call_merge_lg_del_h2.mergeBed,
       insBed = call_merge_lg_ins_h2.mergeBed,
       invBed = call_merge_lg_inv_h2.mergeBed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -425,7 +425,7 @@ workflow pav {
       svFlag = call_inv_flag_insdel_cluster_sv_h1.bed,
       snvCluster = call_inv_cluster_snv_h1.bed,
       indelCluster = call_inv_cluster_indel_h1.bed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -438,7 +438,7 @@ workflow pav {
       svFlag = call_inv_flag_insdel_cluster_sv_h2.bed,
       snvCluster = call_inv_cluster_snv_h2.bed,
       indelCluster = call_inv_cluster_indel_h2.bed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -456,7 +456,7 @@ workflow pav {
         batch = i,
         refGz = align_ref.refGz,
         threads = "8",
-        mem_gb = "8",
+        mem_gb = "32",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -471,7 +471,7 @@ workflow pav {
         batch = i,
         refGz = align_ref.refGz,
         threads = "8",
-        mem_gb = "8",
+        mem_gb = "32",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -482,7 +482,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h1",
       invBed = call_inv_batch_h1.bed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -492,7 +492,7 @@ workflow pav {
       pav_asm = tar_asm.asm_tar,
       hap = "h2",
       invBed = call_inv_batch_h2.bed,
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -506,7 +506,7 @@ workflow pav {
       insBedIn = call_merge_lg_ins_h1.mergeBed,
       invBedIn = call_merge_lg_inv_h1.mergeBed,
       invBatch = call_inv_batch_merge_h1.bed,
-      threads = "2",
+      threads = "6",
       mem_gb = "32",
       sample = sample
   }
@@ -520,7 +520,7 @@ workflow pav {
       insBedIn = call_merge_lg_ins_h2.mergeBed,
       invBedIn = call_merge_lg_inv_h2.mergeBed,
       invBatch = call_inv_batch_merge_h2.bed,
-      threads = "2",
+      threads = "6",
       mem_gb = "32",
       sample = sample
   }
@@ -536,8 +536,9 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "8",
-        mem_gb = "12",
-        sample = sample
+        mem_gb = "24",
+        sample = sample,
+        zones = GetZones.collapsed
      }
      call call_pav.call_merge_haplotypes_chrom_svindel as call_merge_haplotypes_chrom_svindel_del {
       input:
@@ -550,8 +551,9 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "8",
-        mem_gb = "12",
-        sample = sample
+        mem_gb = "24",
+        sample = sample,
+        zones = GetZones.collapsed
      }
      call call_pav.call_merge_haplotypes_chrom_svindel as call_merge_haplotypes_chrom_svinv {
       input:
@@ -564,8 +566,9 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "8",
-        mem_gb = "12",
-        sample = sample
+        mem_gb = "24",
+        sample = sample,
+        zones = GetZones.collapsed
      }
      call call_pav.call_merge_haplotypes_chrom_snv {
       input:
@@ -578,8 +581,9 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "8",
-        mem_gb = "12",
-        sample = sample
+        mem_gb = "24",
+        sample = sample,
+        zones = GetZones.collapsed
      }
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_snv {
@@ -592,9 +596,10 @@ workflow pav {
       callable_h2 = call_mappable_bed_h2.bed,
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
-      threads = "12",
-      mem_gb = "24",
-      sample = sample
+      threads = "48",
+      mem_gb = "128",
+      sample = sample,
+      zones = GetZones.collapsed
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_inv {
     input:
@@ -607,8 +612,9 @@ workflow pav {
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
       threads = "12",
-      mem_gb = "24",
-      sample = sample
+      mem_gb = "48",
+      sample = sample,
+      zones = GetZones.collapsed
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_svindel_ins {
     input:
@@ -621,8 +627,9 @@ workflow pav {
       svtype = "svindel_ins",
       inbed = call_merge_haplotypes_chrom_svindel_ins.bed,
       threads = "12",
-      mem_gb = "24",
-      sample = sample
+      mem_gb = "48",
+      sample = sample,
+      zones = GetZones.collapsed
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_svindel_del {
     input:
@@ -635,8 +642,9 @@ workflow pav {
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
       threads = "12",
-      mem_gb = "24",
-      sample = sample
+      mem_gb = "48",
+      sample = sample,
+      zones = GetZones.collapsed
   }
   call setup.call_final_bed {
     input:
@@ -654,16 +662,16 @@ workflow pav {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "1",
-      mem_gb = "4",
+      threads = "2",
+      mem_gb = "8",
       sample = sample
   }
   call setup.write_vcf {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "1",
-      mem_gb = "16",
+      threads = "8",
+      mem_gb = "64",
       sample = sample,
       contigInfo = data_ref_contig_table.contigInfo,
       finalBedOut = call_final_bed.bed

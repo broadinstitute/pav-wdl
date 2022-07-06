@@ -180,6 +180,7 @@ task call_merge_haplotypes_chrom_svindel {
     String chrom
     String threads
     String mem_gb
+    String zones = "us-central1-c us-central1-b"
   }
   command <<<
     source activate lr-pav
@@ -208,6 +209,7 @@ task call_merge_haplotypes_chrom_svindel {
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      zones: zones
   }
 }
 
@@ -224,6 +226,7 @@ task call_merge_haplotypes_chrom_snv {
     String chrom
     String threads
     String mem_gb
+    String zones = "us-central1-c us-central1-b"
   }
   command <<<
     source activate lr-pav
@@ -252,6 +255,7 @@ task call_merge_haplotypes_chrom_snv {
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      zones: zones
   }
 }
 
@@ -268,6 +272,7 @@ task call_merge_haplotypes {
     String sample
     String threads
     String mem_gb
+    String zones = "us-central1-c us-central1-b"
   }
   command <<<
     source activate lr-pav
@@ -292,10 +297,11 @@ task call_merge_haplotypes {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 200 + " HDD"
+      disks:          "local-disk " + 375 + " LOCAL"
       bootDiskSizeGb: 50
-      preemptible:    3
+      preemptible:    0
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      zones: zones
   }
 }

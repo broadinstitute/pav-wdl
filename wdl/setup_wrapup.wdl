@@ -25,7 +25,7 @@ task tar_asm {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
+      disks:          "local-disk " + 375 + " LOCAL"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -140,7 +140,7 @@ task write_vcf {
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
-      preemptible:    3
+      preemptible:    0
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
