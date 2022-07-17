@@ -25,7 +25,7 @@ task tar_asm {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk 50 SSD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -67,7 +67,7 @@ task call_final_bed {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -101,7 +101,7 @@ task data_ref_contig_table{
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -138,9 +138,9 @@ task write_vcf {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
-      preemptible:    3
+      preemptible:    0
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
@@ -168,4 +168,26 @@ task FilterChromosomes {
     disks: "local-disk 100 HDD"
     docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
   }
+}
+
+task CollapseStrings {
+    meta {
+        description: "For collapsing an array of strings into a long single-space-delimited string"
+    }
+    input {
+        Array[String] whatever
+    }
+
+    command <<<
+        echo ~{sep=' ' whatever}
+    >>>
+
+    output {
+        String collapsed = read_string(stdout())
+    }
+
+    runtime {
+        disks: "local-disk 50 HDD"
+        docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
+    }
 }
