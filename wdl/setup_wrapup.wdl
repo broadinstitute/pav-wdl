@@ -145,3 +145,25 @@ task write_vcf {
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
 }
+
+task CollapseStrings {
+    meta {
+        description: "For collapsing an array of strings into a long single-space-delimited string"
+    }
+    input {
+        Array[String] whatever
+    }
+
+    command <<<
+        echo ~{sep=' ' whatever}
+    >>>
+
+    output {
+        String collapsed = read_string(stdout())
+    }
+
+    runtime {
+        disks: "local-disk 50 HDD"
+        docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
+    }
+}

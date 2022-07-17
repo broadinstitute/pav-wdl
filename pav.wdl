@@ -18,6 +18,8 @@ workflow pav {
     String sample
 
     File config
+
+    Array[String] assigned_gcp_zones = ["us-central1-a", "us-central1-b", "us-central1-c", "us-central1-f"]
   }
 
   Array[Array[String]] chroms = read_tsv(refFai)
@@ -440,6 +442,8 @@ workflow pav {
       mem_gb = "8",
       sample = sample
   }
+
+  call setup.CollapseStrings as GetZones {input: whatever = assigned_gcp_zones}
   scatter(i in range(60)) {
      call call_inv.call_inv_batch_hap as call_inv_batch_h1 {
       input:
@@ -453,7 +457,8 @@ workflow pav {
         refGz = align_ref.refGz,
         threads = "8",
         mem_gb = "8",
-        sample = sample
+        sample = sample,
+        zones = GetZones.collapsed
      }
      call call_inv.call_inv_batch_hap as call_inv_batch_h2 {
       input:
@@ -467,7 +472,8 @@ workflow pav {
         refGz = align_ref.refGz,
         threads = "8",
         mem_gb = "8",
-        sample = sample
+        sample = sample,
+        zones = GetZones.collapsed
      }
   }
   call call_inv.call_inv_batch_merge_hap as call_inv_batch_merge_h1 {

@@ -208,6 +208,7 @@ task call_inv_batch_hap {
     String batch
     String threads
     String mem_gb
+    String zones = "us-central1-c us-central1-b"
   }
   command <<<
     source activate lr-pav
@@ -236,6 +237,7 @@ task call_inv_batch_hap {
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      zones: zones
   }
 }
 
