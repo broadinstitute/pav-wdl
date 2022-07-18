@@ -25,7 +25,7 @@ task tar_asm {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -67,7 +67,7 @@ task call_final_bed {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -101,7 +101,7 @@ task data_ref_contig_table{
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -138,7 +138,7 @@ task write_vcf {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1

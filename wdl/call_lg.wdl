@@ -29,7 +29,7 @@ task call_lg_split_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -75,7 +75,7 @@ task call_lg_discover_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -113,7 +113,7 @@ task call_merge_lg_del_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -151,7 +151,7 @@ task call_merge_lg_ins_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
@@ -189,7 +189,7 @@ task call_merge_lg_inv_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 1000 + " HDD"
+      disks:          "local-disk " + 100 + " HDD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
