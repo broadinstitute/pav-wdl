@@ -145,3 +145,27 @@ task write_vcf {
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
 }
+
+task FilterChromosomes {
+  meta {
+        description: "For down the contigs listed in the FAI to just those targetted."
+  }
+  input {
+    File refFai
+    File targetChromsList
+  }
+
+  command <<<
+    set -eux
+    grep -wf ~{targetChromsList} ~{refFai} > "filtered.fai"
+  >>>
+
+  output {
+    Array[Array[String]] targetChromes = read_tsv("filtered.fai")
+  }
+
+  runtime {
+    disks: "local-disk 100 HDD"
+    docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
+  }
+}

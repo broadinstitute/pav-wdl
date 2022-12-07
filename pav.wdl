@@ -18,9 +18,17 @@ workflow pav {
     String sample
 
     File config
+
+    File targetChromsList
   }
 
-  Array[Array[String]] chroms = read_tsv(refFai)
+  # In case the provided .fai has non-canonical chromosomes
+  call setup.FilterChromosomes {
+    input:
+      refFai = refFai,
+      targetChromsList = targetChromsList
+  }
+  Array[Array[String]] chroms = FilterChromosomes.targetChromes
 
   call setup.tar_asm {
     input:
