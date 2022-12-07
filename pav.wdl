@@ -19,10 +19,18 @@ workflow pav {
 
     File config
 
+    File targetChromsList
+
     Array[String] assigned_gcp_zones = ["us-central1-a", "us-central1-b", "us-central1-c", "us-central1-f"]
   }
 
-  Array[Array[String]] chroms = read_tsv(refFai)
+  # In case the provided .fai has non-canonical chromosomes
+  call setup.FilterChromosomes {
+    input:
+      refFai = refFai,
+      targetChromsList = targetChromsList
+  }
+  Array[Array[String]] chroms = FilterChromosomes.targetChromes
 
   call setup.tar_asm {
     input:

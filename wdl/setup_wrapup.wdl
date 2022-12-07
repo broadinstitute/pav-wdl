@@ -167,3 +167,24 @@ task CollapseStrings {
         docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
     }
 }
+
+task FilterChromosomes {
+  input {
+    File refFai
+    File targetChromsList
+  }
+
+  command <<<
+    set -eux
+    grep -wf ~{targetChromsList} ~{refFai} > "filtered.fai"
+  >>>
+
+  output {
+    Array[Array[String]] targetChromes = read_tsv("filtered.fai")
+  }
+
+  runtime {
+    disks: "local-disk 100 HDD"
+    docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
+  }
+}
