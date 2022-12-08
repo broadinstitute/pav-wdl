@@ -1,4 +1,4 @@
-VERSION = 1.2.1
+VERSION = 1.2.1.aou
 TAG1 = us.gcr.io/broad-dsp-lrma/lr-pav:$(VERSION)
 TAG2 = us.gcr.io/broad-dsp-lrma/lr-pav:latest
 

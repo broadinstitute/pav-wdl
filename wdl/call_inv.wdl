@@ -34,7 +34,7 @@ task call_inv_flag_insdel_cluster_indel_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -72,7 +72,7 @@ task call_inv_flag_insdel_cluster_sv_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -110,7 +110,7 @@ task call_inv_cluster_indel_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -148,7 +148,7 @@ task call_inv_cluster_snv_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -191,7 +191,7 @@ task call_inv_merge_flagged_loci_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -236,7 +236,7 @@ task call_inv_batch_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones
   }
 }
@@ -274,6 +274,6 @@ task call_inv_batch_merge_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }

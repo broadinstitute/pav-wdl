@@ -38,7 +38,7 @@ task call_cigar_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -75,7 +75,7 @@ task call_cigar_merge_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -118,7 +118,7 @@ task call_mappable_bed_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -163,7 +163,7 @@ task call_integrate_sources_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -208,7 +208,7 @@ task call_merge_haplotypes_chrom_svindel {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones
   }
 }
@@ -254,7 +254,7 @@ task call_merge_haplotypes_chrom_snv {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones
   }
 }
@@ -301,7 +301,7 @@ task call_merge_haplotypes {
       bootDiskSizeGb: 50
       preemptible:    0
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones
   }
 }

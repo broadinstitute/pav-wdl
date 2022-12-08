@@ -30,7 +30,7 @@ task align_ref {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -65,7 +65,7 @@ task align_get_tig_fa_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -101,7 +101,7 @@ task align_ref_anno_n_gap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -140,7 +140,7 @@ task align_map_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -181,7 +181,7 @@ task align_get_read_bed_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
 
@@ -220,6 +220,6 @@ task align_cut_tig_overlap_hap {
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
-      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
+      docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
