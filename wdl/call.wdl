@@ -297,7 +297,7 @@ task call_merge_haplotypes {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 375 + " LOCAL"
+      disks:          "local-disk 100 HDD"
       bootDiskSizeGb: 50
       preemptible:    0
       maxRetries:     1

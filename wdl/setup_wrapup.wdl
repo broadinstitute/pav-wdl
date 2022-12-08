@@ -25,7 +25,7 @@ task tar_asm {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 375 + " LOCAL"
+      disks:          "local-disk 50 SSD"
       bootDiskSizeGb: 50
       preemptible:    3
       maxRetries:     1
