@@ -678,8 +678,8 @@ workflow pav {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "8",
-      mem_gb = "64",
+      threads = "64",
+      mem_gb = "256",
       sample = sample,
       contigInfo = data_ref_contig_table.contigInfo,
       finalBedOut = call_final_bed.bed
