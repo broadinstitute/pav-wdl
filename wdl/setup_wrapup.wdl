@@ -145,3 +145,37 @@ task write_vcf {
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
 }
+
+task index_vcf {
+
+    meta {
+        description: "Indexing vcf.gz. Note: do NOT use remote index as that's buggy."
+    }
+
+    input {
+        File vcf
+    }
+
+    String prefix = basename(vcf, ".vcf.gz")
+
+    command <<<
+      set -eux
+      cp ~{vcf} ~{prefix}.vcf.gz && \
+        tabix -p vcf ~{prefix}.vcf.gz && \
+        find ./ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    >>>
+
+    output {
+        File tbi = "~{prefix}.vcf.gz.tbi"
+    }
+
+    #########################
+    runtime {
+        cpu:          8
+        memory:       "32 GiB"
+        disks:        "local-disk 375 LOCAL"
+        preemptible:  2
+        maxRetries:   2
+        docker:       "us.gcr.io/broad-dsp-lrma/lr-basic:latest"
+    }
+}

@@ -664,8 +664,13 @@ workflow pav {
       contigInfo = data_ref_contig_table.contigInfo,
       finalBedOut = call_final_bed.bed
   }
+  call setup.index_vcf {
+    input:
+      vcf = write_vcf.vcf
+  }
 
   output {
     File vcf = write_vcf.vcf
+    File tbi = index_vcf.tbi
   }
 }
