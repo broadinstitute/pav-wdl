@@ -191,3 +191,76 @@ task CollapseStrings {
         docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
     }
 }
+
+task IndexVcf {
+
+    meta {
+        description: "Indexing vcf.gz. Note: do NOT use remote index as that's buggy."
+    }
+
+    input {
+        File vcf
+    }
+
+    String prefix = basename(vcf, ".vcf.gz")
+
+    command <<<
+      set -eux
+      cp ~{vcf} ~{prefix}.vcf.gz && \
+        tabix -p vcf ~{prefix}.vcf.gz && \
+        find ./ -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+    >>>
+
+    output {
+        File tbi = "~{prefix}.vcf.gz.tbi"
+    }
+
+    #########################
+    runtime {
+        cpu:          8
+        memory:       "32 GiB"
+        disks:        "local-disk 375 LOCAL"
+        preemptible:  2
+        maxRetries:   2
+        docker:       "us.gcr.io/broad-dsp-lrma/lr-basic:latest"
+    }
+}
+
+task FinalizeToFile {
+    input {
+        File file
+        String outdir
+        String? name
+    }
+
+    parameter_meta {
+        file: {
+            localization_optional: true
+        }
+        outdir: "directory to which files should be uploaded"
+        name:   "name to set for uploaded file"
+    }
+
+    String gcs_output_dir = sub(outdir, "/+$", "")
+    String gcs_output_file = gcs_output_dir + "/" + select_first([name, basename(file)])
+
+    command <<<
+        set -euxo pipefail
+
+        gsutil -m cp "~{file}" "~{gcs_output_file}"
+    >>>
+
+    output {
+        String gcs_path = gcs_output_file
+    }
+
+    #########################
+    runtime {
+        cpu:    1
+        memory: "4 GiB"
+        disks:  "local-disk 50 HDD"
+        preemptible: 2
+        maxRetries:  1
+        docker: "us.gcr.io/broad-dsp-lrma/lr-finalize:0.1.2"
+    }
+}

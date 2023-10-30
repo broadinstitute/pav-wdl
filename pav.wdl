@@ -21,6 +21,8 @@ workflow pav {
 
     File targetChromsList
 
+    String gcs_out_root_dir
+
     Array[String] assigned_gcp_zones = ["us-central1-a", "us-central1-b", "us-central1-c", "us-central1-f"]
   }
 
@@ -685,7 +687,14 @@ workflow pav {
       finalBedOut = call_final_bed.bed
   }
 
+  call setup.IndexVcf { input: vcf = write_vcf.vcf }
+
+  String dir = sub(gcs_out_root_dir, "/$", "") + "/PAV/~{sample}"
+  call setup.FinalizeToFile as FinalizeVCF { input: outdir = dir, file = write_vcf.vcf }
+  call setup.FinalizeToFile as FinalizeTBI { input: outdir = dir, file = IndexVcf.tbi  }
+
   output {
-    File vcf = write_vcf.vcf
+    File vcf = FinalizeVCF.gcs_path
+    File tbi = FinalizeTBI.gcs_path
   }
 }
