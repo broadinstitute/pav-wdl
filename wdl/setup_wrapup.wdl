@@ -11,6 +11,9 @@ task tar_asm {
   }
   command <<<
     set -eux
+    if cmp --silent ~{hapOne} ~{hapTwo} ; then
+      echo "Haplotype FASTAs are identical" && exit 1
+    fi
     mkdir -p asm/~{sample}
     cp ~{ref} asm/ref.fa
     samtools faidx asm/ref.fa
