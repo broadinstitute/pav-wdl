@@ -47,8 +47,8 @@ workflow pav {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "8",
-      mem_gb = "48",
+      threads = "6",
+      mem_gb = "24",
       sample = sample
   }
   call align.align_get_tig_fa_hap as align_get_tig_fa_h1 {
@@ -56,7 +56,7 @@ workflow pav {
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
       hap = "h1",
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -65,7 +65,7 @@ workflow pav {
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
       hap = "h2",
-      threads = "1",
+      threads = "2",
       mem_gb = "8",
       sample = sample
   }
@@ -86,7 +86,7 @@ workflow pav {
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h1.asmGz,
       threads = "16",
-      mem_gb = "96",
+      mem_gb = "64",
       sample = sample
   }
   call align.align_map_hap as align_map_h2 {
@@ -97,7 +97,7 @@ workflow pav {
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h2.asmGz,
       threads = "16",
-      mem_gb = "96",
+      mem_gb = "64",
       sample = sample
   }
   call align.align_get_read_bed_hap as align_get_read_bed_h1 {
@@ -109,7 +109,7 @@ workflow pav {
       tigFa = align_get_tig_fa_h1.asmGz,
       samGz = align_map_h1.samGz,
       threads = "6",
-      mem_gb = "32",
+      mem_gb = "12",
       sample = sample
   }
   call align.align_get_read_bed_hap as align_get_read_bed_h2 {
@@ -121,7 +121,7 @@ workflow pav {
       tigFa = align_get_tig_fa_h2.asmGz,
       samGz = align_map_h2.samGz,
       threads = "6",
-      mem_gb = "32",
+      mem_gb = "12",
       sample = sample
   }
   call align.align_cut_tig_overlap_hap as align_cut_tig_overlap_h1 {
@@ -157,7 +157,7 @@ workflow pav {
         asmGz = align_get_tig_fa_h1.asmGz,
         batch = i,
         threads = "4",
-        mem_gb = "24",
+        mem_gb = "8",
         sample = sample
      }
      call call_pav.call_cigar_hap as call_cigar_h2 {
@@ -170,7 +170,7 @@ workflow pav {
         asmGz = align_get_tig_fa_h2.asmGz,
         batch = i,
         threads = "4",
-        mem_gb = "24",
+        mem_gb = "8",
         sample = sample
      }
   }
@@ -206,8 +206,8 @@ workflow pav {
         asmGz = align_get_tig_fa_h1.asmGz,
         batchFile = call_lg_split_h1.batch,
         batch = i,
-        threads = "8",
-        mem_gb = "32",
+        threads = "4",
+        mem_gb = "8",
         sample = sample
      }
      call call_lg.call_lg_discover_hap as call_lg_discover_h2 {
@@ -221,8 +221,8 @@ workflow pav {
         asmGz = align_get_tig_fa_h2.asmGz,
         batchFile = call_lg_split_h2.batch,
         batch = i,
-        threads = "8",
-        mem_gb = "32",
+        threads = "4",
+        mem_gb = "8",
         sample = sample
      }
   }
@@ -385,8 +385,8 @@ workflow pav {
       hap = "h1",
       vartype="sv",
       inbed = call_cigar_merge_h1.insdelBedMerge,
-      threads = "8",
-      mem_gb = "64",
+      threads = "2",
+      mem_gb = "16",
       sample = sample
   }
   call call_inv.call_inv_flag_insdel_cluster_sv_hap as call_inv_flag_insdel_cluster_sv_h2 {
@@ -396,8 +396,8 @@ workflow pav {
       hap = "h2",
       vartype="sv",
       inbed = call_cigar_merge_h2.insdelBedMerge,
-      threads = "8",
-      mem_gb = "64",
+      threads = "2",
+      mem_gb = "16",
       sample = sample
   }
   call call_pav.call_mappable_bed_hap as call_mappable_bed_h1 {
@@ -465,8 +465,8 @@ workflow pav {
         asmGz = align_get_tig_fa_h1.asmGz,
         batch = i,
         refGz = align_ref.refGz,
-        threads = "8",
-        mem_gb = "32",
+        threads = "4",
+        mem_gb = "8",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -480,8 +480,8 @@ workflow pav {
         asmGz = align_get_tig_fa_h2.asmGz,
         batch = i,
         refGz = align_ref.refGz,
-        threads = "8",
-        mem_gb = "32",
+        threads = "4",
+        mem_gb = "8",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -517,7 +517,7 @@ workflow pav {
       invBedIn = call_merge_lg_inv_h1.mergeBed,
       invBatch = call_inv_batch_merge_h1.bed,
       threads = "6",
-      mem_gb = "32",
+      mem_gb = "12",
       sample = sample
   }
   call call_pav.call_integrate_sources_hap as call_integrate_sources_h2 {
@@ -531,7 +531,7 @@ workflow pav {
       invBedIn = call_merge_lg_inv_h2.mergeBed,
       invBatch = call_inv_batch_merge_h2.bed,
       threads = "6",
-      mem_gb = "32",
+      mem_gb = "12",
       sample = sample
   }
   scatter(chrom in chroms) {
@@ -545,8 +545,8 @@ workflow pav {
         callable_h1 = call_mappable_bed_h1.bed,
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
-        threads = "8",
-        mem_gb = "24",
+        threads = "4",
+        mem_gb = "8",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -560,8 +560,8 @@ workflow pav {
         callable_h1 = call_mappable_bed_h1.bed,
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
-        threads = "8",
-        mem_gb = "24",
+        threads = "4",
+        mem_gb = "8",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -575,8 +575,8 @@ workflow pav {
         callable_h1 = call_mappable_bed_h1.bed,
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
-        threads = "8",
-        mem_gb = "24",
+        threads = "4",
+        mem_gb = "4",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -590,8 +590,8 @@ workflow pav {
         callable_h1 = call_mappable_bed_h1.bed,
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
-        threads = "8",
-        mem_gb = "24",
+        threads = "4",
+        mem_gb = "8",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -606,10 +606,11 @@ workflow pav {
       callable_h2 = call_mappable_bed_h2.bed,
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
-      threads = "48",
-      mem_gb = "128",
+      threads = "8",
+      mem_gb = "32",
       sample = sample,
-      zones = GetZones.collapsed
+      zones = GetZones.collapsed,
+      preemptible = 0
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_inv {
     input:
@@ -621,8 +622,8 @@ workflow pav {
       callable_h2 = call_mappable_bed_h2.bed,
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
-      threads = "12",
-      mem_gb = "48",
+      threads = "8",
+      mem_gb = "16",
       sample = sample,
       zones = GetZones.collapsed
   }
@@ -636,8 +637,8 @@ workflow pav {
       callable_h2 = call_mappable_bed_h2.bed,
       svtype = "svindel_ins",
       inbed = call_merge_haplotypes_chrom_svindel_ins.bed,
-      threads = "12",
-      mem_gb = "48",
+      threads = "8",
+      mem_gb = "16",
       sample = sample,
       zones = GetZones.collapsed
   }
@@ -651,8 +652,8 @@ workflow pav {
       inbed = call_merge_haplotypes_chrom_svindel_del.bed,
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
-      threads = "12",
-      mem_gb = "48",
+      threads = "8",
+      mem_gb = "16",
       sample = sample,
       zones = GetZones.collapsed
   }
@@ -680,8 +681,8 @@ workflow pav {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "64",
-      mem_gb = "256",
+      threads = "8",
+      mem_gb = "32",
       sample = sample,
       contigInfo = data_ref_contig_table.contigInfo,
       finalBedOut = call_final_bed.bed
@@ -690,11 +691,13 @@ workflow pav {
   call setup.IndexVcf { input: vcf = write_vcf.vcf }
 
   String dir = sub(gcs_out_root_dir, "/$", "") + "/PAV/~{sample}"
+  call setup.FinalizeToFile as FinalizeBed { input: outdir = dir, file = call_final_bed.bed, name = "~{sample}.pav.final_bed.tgz" }
   call setup.FinalizeToFile as FinalizeVCF { input: outdir = dir, file = write_vcf.vcf }
   call setup.FinalizeToFile as FinalizeTBI { input: outdir = dir, file = IndexVcf.tbi  }
 
   output {
     File vcf = FinalizeVCF.gcs_path
     File tbi = FinalizeTBI.gcs_path
+    File bed = FinalizeBed.gcs_path
   }
 }

@@ -34,8 +34,8 @@ task call_cigar_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -71,8 +71,8 @@ task call_cigar_merge_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -114,8 +114,8 @@ task call_mappable_bed_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -159,8 +159,8 @@ task call_integrate_sources_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -204,8 +204,8 @@ task call_merge_haplotypes_chrom_svindel {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -250,8 +250,8 @@ task call_merge_haplotypes_chrom_snv {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -273,6 +273,7 @@ task call_merge_haplotypes {
     String threads
     String mem_gb
     String zones = "us-central1-c us-central1-b"
+    Int preemptible = 3
   }
   command <<<
     source activate lr-pav
@@ -297,9 +298,9 @@ task call_merge_haplotypes {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk 100 HDD"
-      bootDiskSizeGb: 50
-      preemptible:    0
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
+      preemptible:    preemptible
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones

@@ -28,8 +28,8 @@ task tar_asm {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk 50 SSD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
@@ -70,8 +70,8 @@ task call_final_bed {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -104,8 +104,8 @@ task data_ref_contig_table{
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -141,9 +141,9 @@ task write_vcf {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
-      preemptible:    0
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
+      preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
@@ -168,7 +168,7 @@ task FilterChromosomes {
   }
 
   runtime {
-    disks: "local-disk 100 HDD"
+    disks: "local-disk 10 SSD"
     docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
   }
 }
@@ -190,7 +190,7 @@ task CollapseStrings {
     }
 
     runtime {
-        disks: "local-disk 50 HDD"
+        disks: "local-disk " + 30 + " SSD"
         docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
     }
 }
@@ -261,7 +261,7 @@ task FinalizeToFile {
     runtime {
         cpu:    1
         memory: "4 GiB"
-        disks:  "local-disk 50 HDD"
+        disks:  "local-disk " + 30 + " SSD"
         preemptible: 2
         maxRetries:  1
         docker: "us.gcr.io/broad-dsp-lrma/lr-finalize:0.1.2"

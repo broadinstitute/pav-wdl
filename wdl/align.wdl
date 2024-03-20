@@ -26,8 +26,8 @@ task align_ref {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -61,8 +61,8 @@ task align_get_tig_fa_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -97,8 +97,8 @@ task align_ref_anno_n_gap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -136,10 +136,10 @@ task align_map_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -177,8 +177,8 @@ task align_get_read_bed_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
@@ -216,8 +216,8 @@ task align_cut_tig_overlap_hap {
   runtime {
       cpu:            threads
       memory:         mem_gb + " GiB"
-      disks:          "local-disk " + 100 + " HDD"
-      bootDiskSizeGb: 50
+      disks:          "local-disk " + 30 + " SSD"
+      bootDiskSizeGb: 10
       preemptible:    3
       maxRetries:     1
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
