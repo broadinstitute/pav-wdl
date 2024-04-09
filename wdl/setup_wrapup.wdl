@@ -8,11 +8,14 @@ task tar_asm {
     String sample
     String threads
     String mem_gb
+    Boolean makesure_asm_diff = true
   }
   command <<<
     set -eux
-    if cmp --silent ~{hapOne} ~{hapTwo} ; then
-      echo "Haplotype FASTAs are identical" && exit 1
+    if ~{makesure_asm_diff} ; then
+      if cmp --silent ~{hapOne} ~{hapTwo} ; then
+        echo "Haplotype FASTAs are identical" && exit 1
+      fi
     fi
     mkdir -p asm/~{sample}
     cp ~{ref} asm/ref.fa

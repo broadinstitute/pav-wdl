@@ -23,6 +23,7 @@ workflow pav {
 
     String gcs_out_root_dir
 
+    Boolean makesure_asm_diff = true
     Array[String] assigned_gcp_zones = ["us-central1-a", "us-central1-b", "us-central1-c", "us-central1-f"]
   }
 
@@ -41,7 +42,8 @@ workflow pav {
       hapTwo = hapTwo,
       threads = "1",
       mem_gb = "4",
-      sample = sample
+      sample = sample,
+      makesure_asm_diff = makesure_asm_diff
   }
   call align.align_ref {
     input:
