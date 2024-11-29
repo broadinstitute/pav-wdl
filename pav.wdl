@@ -86,7 +86,7 @@ workflow pav {
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h1.asmGz,
       threads = "16",
-      mem_gb = "64",
+      mem_gb = "48",
       sample = sample
   }
   call align.align_map_hap as align_map_h2 {
@@ -97,7 +97,7 @@ workflow pav {
       refGz = align_ref.refGz,
       asmGz = align_get_tig_fa_h2.asmGz,
       threads = "16",
-      mem_gb = "64",
+      mem_gb = "48",
       sample = sample
   }
   call align.align_get_read_bed_hap as align_get_read_bed_h1 {
