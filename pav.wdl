@@ -546,7 +546,7 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "4",
-        mem_gb = "8",
+        mem_gb = "4",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -561,7 +561,7 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "4",
-        mem_gb = "8",
+        mem_gb = "4",
         sample = sample,
         zones = GetZones.collapsed
      }
@@ -591,7 +591,7 @@ workflow pav {
         callable_h2 = call_mappable_bed_h2.bed,
         chrom = chrom[0],
         threads = "4",
-        mem_gb = "8",
+        mem_gb = "6",
         sample = sample,
         zones = GetZones.collapsed
      }
