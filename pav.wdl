@@ -665,8 +665,8 @@ workflow pav {
       insBed = call_merge_haplotypes_svindel_ins.bed,
       delBed = call_merge_haplotypes_svindel_del.bed,
       snvBed = call_merge_haplotypes_snv.bed,
-      threads = "4",
-      mem_gb = "16",
+      threads = "2",
+      mem_gb = "10",
       sample = sample
   }
   call setup.data_ref_contig_table {
