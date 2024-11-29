@@ -30,7 +30,7 @@ task tar_asm {
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
-      preemptible:    3
+      preemptible:    2
       maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
