@@ -157,7 +157,7 @@ workflow pav {
         asmGz = align_get_tig_fa_h1.asmGz,
         batch = i,
         threads = "4",
-        mem_gb = "8",
+        mem_gb = "6",
         sample = sample
      }
      call call_pav.call_cigar_hap as call_cigar_h2 {
@@ -170,7 +170,7 @@ workflow pav {
         asmGz = align_get_tig_fa_h2.asmGz,
         batch = i,
         threads = "4",
-        mem_gb = "8",
+        mem_gb = "6",
         sample = sample
      }
   }
