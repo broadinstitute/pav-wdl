@@ -606,11 +606,11 @@ workflow pav {
       callable_h2 = call_mappable_bed_h2.bed,
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
-      threads = "8",
-      mem_gb = "32",
+      threads = "4",
+      mem_gb = "24",
       sample = sample,
       zones = GetZones.collapsed,
-      preemptible = 0
+      preemptible = 1
   }
   call call_pav.call_merge_haplotypes as call_merge_haplotypes_inv {
     input:
