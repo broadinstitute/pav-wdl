@@ -33,7 +33,7 @@ task call_inv_flag_insdel_cluster_indel_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -71,7 +71,7 @@ task call_inv_flag_insdel_cluster_sv_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -109,7 +109,7 @@ task call_inv_cluster_indel_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -147,7 +147,7 @@ task call_inv_cluster_snv_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -190,7 +190,7 @@ task call_inv_merge_flagged_loci_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -235,7 +235,7 @@ task call_inv_batch_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
       zones: zones
   }
@@ -273,7 +273,7 @@ task call_inv_batch_merge_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }

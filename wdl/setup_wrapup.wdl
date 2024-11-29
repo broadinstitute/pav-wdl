@@ -31,7 +31,7 @@ task tar_asm {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1"
   }
 }
@@ -73,7 +73,7 @@ task call_final_bed {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -107,7 +107,7 @@ task data_ref_contig_table{
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -144,7 +144,7 @@ task write_vcf {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }

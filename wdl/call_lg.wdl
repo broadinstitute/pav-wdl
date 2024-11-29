@@ -32,7 +32,7 @@ task call_lg_split_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -78,7 +78,7 @@ task call_lg_discover_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -116,7 +116,7 @@ task call_merge_lg_del_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -154,7 +154,7 @@ task call_merge_lg_ins_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -192,7 +192,7 @@ task call_merge_lg_inv_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }

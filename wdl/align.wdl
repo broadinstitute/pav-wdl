@@ -29,7 +29,7 @@ task align_ref {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -64,7 +64,7 @@ task align_get_tig_fa_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -100,7 +100,7 @@ task align_ref_anno_n_gap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -180,7 +180,7 @@ task align_get_read_bed_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
@@ -219,7 +219,7 @@ task align_cut_tig_overlap_hap {
       disks:          "local-disk " + 30 + " SSD"
       bootDiskSizeGb: 10
       preemptible:    3
-      maxRetries:     1
+      maxRetries:     0
       docker:         "us.gcr.io/broad-dsp-lrma/lr-pav:1.2.1.aou"
   }
 }
