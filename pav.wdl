@@ -47,8 +47,8 @@ workflow pav {
     input:
       pav_conf = config,
       pav_asm = tar_asm.asm_tar,
-      threads = "6",
-      mem_gb = "24",
+      threads = "4",
+      mem_gb = "12",
       sample = sample
   }
   call align.align_get_tig_fa_hap as align_get_tig_fa_h1 {
