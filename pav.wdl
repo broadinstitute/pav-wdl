@@ -40,7 +40,7 @@ workflow pav {
       hapOne = hapOne,
       hapTwo = hapTwo,
       threads = "1",
-      mem_gb = "4",
+      mem_gb = "2",
       sample = sample
   }
   call align.align_ref {
