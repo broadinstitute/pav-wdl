@@ -26,6 +26,8 @@ task tar_asm {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -68,6 +70,8 @@ task call_final_bed {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -102,6 +106,8 @@ task data_ref_contig_table{
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -139,6 +145,8 @@ task write_vcf {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -168,6 +176,8 @@ task FilterChromosomes {
   }
 
   runtime {
+      noAddress: true
+
     disks: "local-disk 10 HDD"
     docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
     preemptible:    1
@@ -192,6 +202,8 @@ task CollapseStrings {
     }
 
     runtime {
+        noAddress: true
+
         disks: "local-disk 10 HDD"
         docker: "gcr.io/cloud-marketplace/google/ubuntu2004:latest"
         preemptible:    1
@@ -224,6 +236,8 @@ task IndexVcf {
 
     #########################
     runtime {
+        noAddress: true
+
         cpu:          8
         memory:       "32 GiB"
         disks:        "local-disk 375 LOCAL"
@@ -263,6 +277,8 @@ task FinalizeToFile {
 
     #########################
     runtime {
+        noAddress: true
+
         cpu:    1
         memory: "4 GiB"
         disks:  "local-disk " + 30 + " SSD"

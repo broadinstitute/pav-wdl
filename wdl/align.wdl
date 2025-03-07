@@ -24,6 +24,8 @@ task align_ref {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -59,6 +61,8 @@ task align_get_tig_fa_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -95,6 +99,8 @@ task align_ref_anno_n_gap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -134,6 +140,8 @@ task align_map_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -175,6 +183,8 @@ task align_get_read_bed_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -214,6 +224,8 @@ task align_cut_tig_overlap_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"

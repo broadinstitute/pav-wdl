@@ -28,6 +28,8 @@ task call_inv_flag_insdel_cluster_indel_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"

@@ -32,6 +32,8 @@ task call_cigar_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -69,6 +71,8 @@ task call_cigar_merge_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -112,6 +116,8 @@ task call_mappable_bed_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -157,6 +163,8 @@ task call_integrate_sources_hap {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -202,6 +210,8 @@ task call_merge_haplotypes_chrom_svindel {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -248,6 +258,8 @@ task call_merge_haplotypes_chrom_snv {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
@@ -296,6 +308,8 @@ task call_merge_haplotypes {
   }
   ############################
   runtime {
+      noAddress: true
+
       cpu:            threads
       memory:         mem_gb + " GiB"
       disks:          "local-disk " + 30 + " SSD"
