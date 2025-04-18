@@ -638,7 +638,7 @@ workflow pav {
       svtype = "svindel_ins",
       inbed = call_merge_haplotypes_chrom_svindel_ins.bed,
       threads = "4",
-      mem_gb = "8",
+      mem_gb = "16",
       sample = sample,
       zones = GetZones.collapsed
   }
