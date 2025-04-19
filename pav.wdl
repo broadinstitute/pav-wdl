@@ -653,7 +653,7 @@ workflow pav {
       integrated_h1 = call_integrate_sources_h1.all_vars_bed,
       integrated_h2 = call_integrate_sources_h2.all_vars_bed,
       threads = "4",
-      mem_gb = "8",
+      mem_gb = "16",
       sample = sample,
       zones = GetZones.collapsed
   }
